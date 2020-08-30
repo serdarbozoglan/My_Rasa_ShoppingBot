@@ -1,0 +1,28 @@
+language: en
+pipeline:
+  - name: SpacyNLP
+  - name: profanity_analyzer.ProfanityAnalyzer
+  - name: SpacyTokenizer
+  - name: CountVectorsFeaturizer
+  - name: DIETClassifier
+    epochs: 70
+    random_seed: 4299
+  - name: EntitySynonymMapper
+
+policies: 
+  - name: MemoizationPolicy #Optimized for precision not for recall
+    max_history: 5
+  - name: TEDPolicy # Uses ML to predict, LSTM architecture
+    max_history: 5
+    epochs: 100
+    random_seed : 4299
+  - name: MappingPolicy  # Specific intent can be followed by a specfic action regardless of what happened in the conversation 
+  - name: FormPolicy
+  - name: FallbackPolicy
+    nlu_threshold: 0.4
+    core_threshold: 0.4
+    ambiguity_threshold: 0.1 # first and second action arasinda 0.1'den daha az bir fark olursa fallback'e duser
+    fallback_action_name: action_my_fallback
+
+
+
