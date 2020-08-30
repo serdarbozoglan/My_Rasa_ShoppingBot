@@ -1,1 +1,1 @@
-# My_Rasa_ShoppingBot
+# Shopping Bot which is created by using Rasa.
