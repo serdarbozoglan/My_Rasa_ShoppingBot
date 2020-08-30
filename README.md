@@ -1,1 +1,1 @@
-# Shopping Bot which is created by using Rasa.
+# Shopping Bot which was created by using Rasa.
